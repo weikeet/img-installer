@@ -4,6 +4,7 @@ mkdir -p openwrt
 REPO="wukongdaily/img-installer"
 TAG="2026-01-02"
 
+# 固件下载地址：https://site.istoreos.com/firmware/download?devicename=x86_64
 # 定义文件相关信息
 VERSION="24.10.5"
 BUILD_DATE="2025123110"
