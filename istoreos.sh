@@ -3,14 +3,17 @@ mkdir -p openwrt
 
 REPO="wukongdaily/img-installer"
 TAG="2026-01-02"
-FILE_NAME="istoreos-24.10.5-2025123110-x86-64-squashfs-combined-efi.img.gz"
-OUTPUT_PATH="openwrt/istoreos.img.gz"
-DOWNLOAD_URL=$(curl -s https://api.github.com/repos/$REPO/releases/tags/$TAG | jq -r '.assets[] | select(.name == "'"$FILE_NAME"'") | .browser_download_url')
 
-if [[ -z "$DOWNLOAD_URL" ]]; then
-  echo "错误：未找到文件 $FILE_NAME"
-  exit 1
-fi
+# 定义文件相关信息
+VERSION="24.10.5"
+BUILD_DATE="2025123110"
+ARCH="x86-64"
+TYPE="squashfs-combined-efi"
+
+# 构建文件名和URL
+FILE_NAME="istoreos-${VERSION}-${BUILD_DATE}-${ARCH}-${TYPE}.img.gz"
+OUTPUT_PATH="openwrt/istoreos.img.gz"
+DOWNLOAD_URL="https://fw0.koolcenter.com/iStoreOS/x86_64_efi/${FILE_NAME}"
 
 echo "下载地址: $DOWNLOAD_URL"
 echo "下载文件: $FILE_NAME -> $OUTPUT_PATH"
